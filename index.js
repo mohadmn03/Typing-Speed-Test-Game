@@ -24,8 +24,14 @@ const lvls = {
   Hard: 2,
 };
 //default level
-let defaultLevelName = "Normal"; //task : choose box to change the level
+let defaultLevelName = "Normal";
 let defaultLevelSeconds = lvls[defaultLevelName];
+//select level
+let chooseTheLevelMenuButton = document.querySelector(".chooseTheLevel");
+let menuLevels = document.querySelector(".menuLevels");
+chooseTheLevelMenuButton.addEventListener("click", (event) => {
+  menuLevels.classList.toggle("show");
+});
 //Selectors
 let startButton = document.querySelector(".start");
 let lvlNameSpan = document.querySelector(".lvl");
@@ -42,6 +48,14 @@ lvlNameSpan.innerHTML = defaultLevelName;
 SecondsSpan.innerHTML = defaultLevelSeconds;
 timeLeftSpan.innerHTML = defaultLevelSeconds;
 scoreTotal.innerHTML = names.length;
+let levelRadios = document.querySelectorAll(".menuLevels input");
+levelRadios.forEach((levelRadio) => {
+  levelRadio.addEventListener("click", (event) => {
+    lvlNameSpan.innerHTML = levelRadio.value;
+    SecondsSpan.innerHTML = lvls[levelRadio.value];
+    timeLeftSpan.innerHTML = lvls[levelRadio.value];
+  });
+});
 //disable paste event
 input.onpaste = (event) => {
   return false;

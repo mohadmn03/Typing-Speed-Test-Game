@@ -27,6 +27,7 @@ $main-color: #2196f3;
       border-radius: 6px;
       text-align: center;
       color: black;
+      position: relative;
       span {
         font-weight: bold;
         color: #009688;
@@ -35,6 +36,47 @@ $main-color: #2196f3;
         }
         &::after {
           content: " ]";
+        }
+      }
+      .chooseTheLevel {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        cursor: context-menu;
+        animation: leftToRight linear 1s infinite;
+        @keyframes leftToRight {
+          0,
+          100% {
+            left: 0;
+          }
+          50% {
+            right: 20px;
+          }
+        }
+      }
+      .menuLevels {
+        background-color: $main-color;
+        display: none;
+        color: white;
+        position: absolute;
+        top: 100%;
+        right: -150px;
+        transform: translateY(-50%);
+        padding: 20px;
+        border-radius: 4px;
+        form {
+          width: 80px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        &.show {
+          display: block;
         }
       }
     }
@@ -114,6 +156,15 @@ $main-color: #2196f3;
       .bad {
         color: red;
       }
+    }
+  }
+}
+.choix {
+  height: 100vh;
+  margin: 100px 600px;
+  form {
+    input {
+      cursor: pointer;
     }
   }
 }
